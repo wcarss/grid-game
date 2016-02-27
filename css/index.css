@@ -1,0 +1,12 @@
+body {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.square {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #FFF;
+}
