@@ -1,3 +1,5 @@
+var shortinterval, midinterval, longinterval, rewardinterval;
+
 var make_grid = function(xsize, ysize, square_width, square_height) {
   var grid = $("#grid"),
     i, j;
@@ -10,7 +12,7 @@ var make_grid = function(xsize, ysize, square_width, square_height) {
 
   for (i = 0; i < ysize; i++) {
     $(".row_" + i).each(function() {
-      $(this).css({'top': 50 + (i * square_height) + 'px', height: square_height + 'px' });
+      $(this).css({'top': 100 + (i * square_height) + 'px', height: square_height + 'px' });
     });
   }
 
@@ -38,6 +40,24 @@ var darkenAll = function() {
   });
 }
 
+var healthCheck = function(health, bg) {
+  if (health >= 1 && bg.getBrightness() < 20) {
+    health -= 1;
+    if (health < 1) {
+      $("#health").html("Game over. You died. <a href='.'>Play Again?</a>");
+      $("h1").text("Game over!");
+      clearInterval(shortinterval);
+      clearInterval(midinterval);
+      clearInterval(longinterval);
+      clearInterval(rewardinterval);
+      darkenAll();
+    } else {
+      $("#health").text("Health: " + health);
+    }
+  }
+  return health;
+}
+
 $(function() {
   var square_height = 64,
     square_width = 64,
@@ -45,8 +65,7 @@ $(function() {
     ysize = 10,
     score = 0,
     charge = 0,
-    health = 30,
-    shortinterval, midinterval, longinterval, rewardinterval;
+    health = 30;
 
   make_grid(xsize, ysize, square_width, square_height);
 
@@ -64,7 +83,7 @@ $(function() {
           $(".square").css("background", "white");
         }, 350);
         setTimeout(function() {
-          $("h1").text("Click to reset boxes! Reds charge nukes!");
+          $("h1").text("While The Light Remains");
         }, 2000);
       } else {
         rgb = bg.toRgb();
@@ -102,21 +121,7 @@ $(function() {
       } 
 
       bg.darken(darkness).spin(spin);
-      if (health >= 1 && bg.getBrightness() < 20) {
-        health -= 1;
-        if (health < 1) {
-          $("#health").text("Game over. You died.");
-          $("h1").text("Game over!");
-          clearInterval(shortinterval);
-          clearInterval(midinterval);
-          clearInterval(longinterval);
-          clearInterval(rewardinterval);
-          darkenAll();
-          return "black";
-        } else {
-          $("#health").text("Health: " + health);
-        }
-      }
+      health = healthCheck(health, bg);
       return bg.toString();
     });
   }, 4)
@@ -139,21 +144,7 @@ $(function() {
       } 
 
       bg.darken(darkness).spin(spin);
-      if (bg.getBrightness() < 20) {
-        health -= 1;
-        if (health < 1) {
-          $("#health").text("Game over. You died.");
-          $("h1").text("Game over!");
-          clearInterval(shortinterval);
-          clearInterval(midinterval);
-          clearInterval(longinterval);
-          clearInterval(rewardinterval);
-          darkenAll();
-          return "black";
-        } else {
-          $("#health").text("Health: " + health);
-        }
-      }
+      health = healthCheck(health, bg);
       return bg.toString();
     });
   }, 80)
@@ -176,21 +167,7 @@ $(function() {
       } 
 
       bg.saturate(saturation).darken(darkness).spin(spin);
-      if (bg.getBrightness() < 20) {
-        health -= 1;
-        if (health < 1) {
-          $("#health").text("Game over. You died.");
-          $("h1").text("Game over!");
-          clearInterval(shortinterval);
-          clearInterval(midinterval);
-          clearInterval(longinterval);
-          clearInterval(rewardinterval);
-          darkenAll();
-          return "black";
-        } else {
-          $("#health").text("Health: " + health);
-        }
-      }
+      health = healthCheck(health, bg);
       return bg.toString();
     });
   }, 1550)

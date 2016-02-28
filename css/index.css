@@ -1,13 +1,36 @@
 body {
-  background: url('img/bg1.png');
+  background: url('../img/bg1.png');
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 h1 {
-  position: absolute;
+  margin-top: 10px;
+  margin-left: 20px;
   font-size: 2em;
-  font-weight: bold;
-  left: 200px;
-  top: 10px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#title-container {
+  position: absolute;
+  left: 180px;
+  top: 0px;
+  height: 820px;
+  width: 680px;
+  background: white;
+}
+
+#info-container {
+  position: absolute;
+  left: 180px;
+  top: 750px;
+  height: 120px;
+  width: 680px;
+  background: white;
 }
 
 .square {
@@ -18,23 +41,8 @@ h1 {
   background: #FFF;
 }
 
-#score {
-  position: absolute;
-  font-weight: 1.4em;
-  bottom: 100px;
-  left: 200px;
-}
-
-#health {
-  position: absolute;
-  font-weight: 1.4em;
-  bottom: 100px;
-  left: 500px;
-}
-
-#charge {
-  position: absolute;
-  font-weight: 1.4em;
-  bottom: 100px;
-  left: 350px;
+span {
+  margin-top: 10px;
+  margin-left: 20px;
+  display: block;
 }
