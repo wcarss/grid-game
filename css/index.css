@@ -1,6 +1,9 @@
-body {
-  width: 600px;
-  margin: 0 auto;
+h1 {
+  position: absolute;
+  font-size: 2em;
+  font-weight: bold;
+  left: 200px;
+  top: 10px;
 }
 
 .square {
@@ -9,4 +12,18 @@ body {
   width: 10px;
   height: 10px;
   background: #FFF;
+}
+
+#score {
+  position: absolute;
+  font-weight: 1.4em;
+  bottom: 100px;
+  left: 200px;
+}
+
+#health {
+  position: absolute;
+  font-weight: 1.4em;
+  bottom: 100px;
+  left: 500px;
 }
