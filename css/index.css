@@ -1,3 +1,7 @@
+body {
+  background: url('img/bg1.png');
+}
+
 h1 {
   position: absolute;
   font-size: 2em;
