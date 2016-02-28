@@ -27,3 +27,10 @@ h1 {
   bottom: 100px;
   left: 500px;
 }
+
+#charge {
+  position: absolute;
+  font-weight: 1.4em;
+  bottom: 100px;
+  left: 350px;
+}
